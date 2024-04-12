@@ -18,9 +18,16 @@ document.addEventListener('DOMContentLoaded', function() {
             let screenWidth;
             let screenHeight;
 
-            function updateBatteryStatus() {
-                batteryLevel = Math.floor((navigator.battery || navigator.webkitBattery).level * 100);
-            }
+function updateBatteryStatus() {
+    var batteryObject = navigator.battery || navigator.webkitBattery;
+
+    if (batteryObject) {
+        batteryLevel = Math.floor(batteryObject.level * 100);
+    } else {
+        // Обработка случая, когда объект батареи не найден
+        console.error('Battery object not found');
+    }
+}
 
             updateBatteryStatus();
 
