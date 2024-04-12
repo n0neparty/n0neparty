@@ -19,16 +19,21 @@ document.addEventListener('DOMContentLoaded', function() {
             let screenHeight;
 
 function updateBatteryStatus() {
+    var isMobileDevice = /Mobi|Android|Touch/.test(navigator.userAgent);
+
+    if (!isMobileDevice) {
+        console.log("This function is only supported on mobile devices.");
+        return;
+    }
+
     var batteryObject = navigator.battery || navigator.webkitBattery;
 
     if (batteryObject) {
         batteryLevel = Math.floor(batteryObject.level * 100);
     } else {
-        // Обработка случая, когда объект батареи не найден
         console.error('Battery object not found');
     }
 }
-
             updateBatteryStatus();
 
             window.addEventListener('batterystatuschange', updateBatteryStatus);
