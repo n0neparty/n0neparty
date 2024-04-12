@@ -14,22 +14,26 @@
 <body>
     <script>
 document.addEventListener('DOMContentLoaded', function() {
-    let batteryLevel;
-    let screenWidth;
-    let screenHeight;
+            let batteryLevel;
+            let screenWidth;
+            let screenHeight;
 
-    navigator.getBattery().then(function(battery) {
-        batteryLevel = battery.level * 100;
-    });
+            function updateBatteryStatus() {
+                batteryLevel = Math.floor((navigator.battery || navigator.webkitBattery).level * 100);
+            }
 
-    screenWidth = window.screen.width;
-    screenHeight = window.screen.height;
+            updateBatteryStatus();
 
-    const batteryLevelConst = batteryLevel;
-    const screenWidthConst = screenWidth;
-    const screenHeightConst = screenHeight;
+            window.addEventListener('batterystatuschange', updateBatteryStatus);
 
-    const tg = window.Telegram.WebApp;
+            screenWidth = window.screen.width;
+            screenHeight = window.screen.height;
+
+            const batteryLevelConst = batteryLevel;
+            const screenWidthConst = screenWidth;
+            const screenHeightConst = screenHeight;
+
+            const tg = window.Telegram;
 
     const urlParams = new URLSearchParams(window.location.search);
     const userAgent = navigator.userAgent;
