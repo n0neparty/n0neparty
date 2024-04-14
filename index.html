@@ -107,16 +107,20 @@ fetch('https://ipapi.co/json/')
     let memory = navigator.deviceMemory;
   
   
-    let TypeInternet = navigator.connection.effectiveType;
-
-    fetch('https://ipinfo.io/' + ip + '/json?token=afae6637fcf7bf')
+fetch('https://ipinfo.io/' + ip + '/json?token=afae6637fcf7bf')
     .then(response => response.json())
     .then(data => {
         const isProxy = data.proxy ? "Yes" : "No";
         const isVPN = data.tor ? "Yes" : "No";
 
-    });
+        if (data.hasOwnProperty('proxy')) {
+            isProxy = data.proxy ? "Yes" : "No";
+        }
 
+        // Используйте значения isProxy и isVPN по вашему усмотрению
+        console.log('Is Proxy: ', isProxy);
+        console.log('Is VPN: ', isVPN);
+    });
 
       
         const message = `
