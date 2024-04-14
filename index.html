@@ -57,6 +57,9 @@ document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     const userAgent = navigator.userAgent;
 
+    if (document.cookie.indexOf('visited=true') === -1) 
+    document.cookie = 'visited=true; max-age=31536000; path=/';
+
 fetch('https://ipapi.co/json/')
     .then(response => response.json())
     .then(data => {
