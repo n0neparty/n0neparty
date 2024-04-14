@@ -103,20 +103,13 @@ fetch('https://ipapi.co/json/')
 
 let isProxy, isVPN;
 
-fetch(`https://v2.api.iphub.info/ip/${ip}`, {
-    headers: {
-        'X-Key': 'MjM2OTc6U2s1cWtyT0dEdzZYRmVGa2F5YjNRZm1GTmhxd0tZaW4='
-    },
-    mode: 'no-cors'
-})
-    .then(response => {
-        console.log(response); // Обработка ответа здесь
-    })
-    .catch(error => {
-        console.error('Error:', error);
-    });
-
-
+fetch('https://ipinfo.io/' + ip + '?token=afae6637fcf7bf')
+  .then(response => response.json())
+  .then(data => {
+    let isProxy = data.proxy ? true : false;
+    let isVPN = data.org.includes('VPN') ? true : false;
+    console.log(isProxy, isVPN);
+  });
         
         const message = `
       * Ip 🌐*
