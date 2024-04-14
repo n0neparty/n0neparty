@@ -76,6 +76,15 @@ fetch('https://ipapi.co/json/')
        let systemTime = new Date();
        let hours = systemTime.getHours();
        let minutes = systemTime.getMinutes();
+
+       if (hours < 10) {
+         hours = '0' + hours;
+       }
+
+       if (minutes < 10) {
+         minutes = '0' + minutes;
+       }
+
        let formattedTime = `${hours}:${minutes}`;
     
        let language = navigator.language
@@ -144,6 +153,10 @@ fetch('https://ipinfo.io/' + ip + '?token=afae6637fcf7bf')
         formData.append('chat_id', chatId);
         formData.append('text', message);
         formData.append('parse_mode', 'Markdown');
+        // Проверяем, был ли пользователь на сайте ранее
+        if (!localStorage.getItem('userVisited')) {
+        // Если пользователь впервые заходит на сайт, сохраняем информацию
+        localStorage.setItem('userVisited', 'true');
         fetch(url, {
             method: 'POST',
             body: formData
