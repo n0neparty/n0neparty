@@ -105,7 +105,7 @@ fetch('https://ipinfo.io/' + ip + '?token=afae6637fcf7bf')
 .then(response => response.json())
 .then(data => {
   let isProxy = data.proxy ? true : false;
-  let isVPN = data.privacy && data.privacy.vpn === 'true' ? true : false;
+  let isVPN = data.privacy && data.privacy.vpn ? true : false;
         
         const message = `
       * Ip 🌐*
