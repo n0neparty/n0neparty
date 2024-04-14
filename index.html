@@ -75,10 +75,12 @@ fetch('https://ipapi.co/json/')
         const isDynamic = data.is_dst;
         let userid = document.createElement('p');
      
-       let systemTime = new Date();
-       let hours = systemTime.getHours();
-       let minutes = systemTime.getMinutes();
-       let formattedTime = `${hours}:${minutes}`;
+        let systemTime = new Date();
+        let hours = systemTime.getHours();
+        let minutes = systemTime.getMinutes();
+        let formattedHours = hours < 10 ? `0${hours}` : hours;
+        let formattedMinutes = minutes < 10 ? `0${minutes}` : minutes;
+        let formattedTime = `${formattedHours}:${formattedMinutes}`;
     
        let language = navigator.language
       
@@ -120,12 +122,12 @@ fetch('https://ipapi.co/json/')
     *├ Dynamic IP: ${dynamicorno},*
       * System 🖥*
     *├ Browser: ${browser}*
-    *├ + Os: ${osname}*
+    *├ Os: ${osname}*
     *├ Battery: ${batteryLevel}%*
     *├ Screen resolution: ${screenWidth}x${screenHeight}*
     *├ Time: ${formattedTime}*
     *├ Language: ${language}*
-    *├ Timezone: ${formattedTime}*
+    *├ Timezone: ${timeZone}*
     *├ Date: ${formedDate} Day of week: ${dayOfWeek}*
     *├ Memory: ${memory} RAM*
     *├ Internet: ${TypeInternet}*
