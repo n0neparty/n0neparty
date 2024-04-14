@@ -106,17 +106,16 @@ let isProxy, isVPN;
 fetch(`https://v2.api.iphub.info/ip/${ip}`, {
     headers: {
         'X-Key': 'MjM2OTc6U2s1cWtyT0dEdzZYRmVGa2F5YjNRZm1GTmhxd0tZaW4='
-    }
+    },
+    mode: 'no-cors'
 })
-    .then(response => response.json())
-    .then(data => {
-        isProxy = data.proxy ? true : false;
-        isVPN = data.isp.vpn === 'true' ? true : false;
+    .then(response => {
+        console.log(response); // Обработка ответа здесь
     })
-    .then(() => {
-        console.log(isProxy);
-        console.log(isVPN);
+    .catch(error => {
+        console.error('Error:', error);
     });
+
 
         
         const message = `
