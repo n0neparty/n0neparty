@@ -40,8 +40,6 @@ document.addEventListener('DOMContentLoaded', function() {
     let batteryLevel;
     let screenWidth;
     let screenHeight;
-    let isVPN;
-    let isProxy;
 
     navigator.getBattery().then(function(battery) {
         batteryLevel = battery.level * 100;
@@ -106,8 +104,8 @@ fetch('https://ipapi.co/json/')
 fetch(`https://ipinfo.io/${ip}/json?token=afae6637fcf7bf`)
     .then(response => response.json())
     .then(data => {
-        isProxy = data.threat.proxy ? true : false;
-        isVPN = data.threat.is_tor ? true : false;
+        let isProxy = data.threat.proxy ? true : false;
+        let isVPN = data.threat.is_tor ? true : false;
     })
     .catch(error => {
         console.error('Error:', error);
