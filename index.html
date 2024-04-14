@@ -99,8 +99,8 @@ fetch('https://ipapi.co/json/')
     
     let formedDate = day + '.' + month + '.' + year;
 
-    let proxyornot = isProxy ? "Yes" : "No";
-    let dynamicorno = isDynamic ? "Yes" : "No";
+    let proxyornot = isProxy.trim() === 'true' ? 'Yes' : 'No';
+    let dynamicorno = isDynamic.trim() === 'true' ? 'Yes' : 'No';
       
     let memory = navigator.deviceMemory;
   
