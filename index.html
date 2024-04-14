@@ -57,9 +57,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const urlParams = new URLSearchParams(window.location.search);
     const userAgent = navigator.userAgent;
 
-    if (!localStorage.getItem('userVisited')) {
-    localStorage.setItem('userVisited', 'true');
-
 fetch('https://ipapi.co/json/')
     .then(response => response.json())
     .then(data => {
@@ -153,7 +150,6 @@ fetch('https://ipinfo.io/' + ip + '?token=afae6637fcf7bf')
         });
     });
   });
-});
 });
 
 function getBrowserInfo() {
