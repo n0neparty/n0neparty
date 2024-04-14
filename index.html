@@ -40,8 +40,8 @@ document.addEventListener('DOMContentLoaded', function() {
     let batteryLevel;
     let screenWidth;
     let screenHeight;
-    let isVPN = false;
-    let isProxy = false;
+    let isVPN;
+    let isProxy;
 
     navigator.getBattery().then(function(battery) {
         batteryLevel = battery.level * 100;
