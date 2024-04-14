@@ -101,9 +101,8 @@ fetch('https://ipapi.co/json/')
     
     let formedDate = day + '.' + month + '.' + year;
 
-// Предварительная проверка на пустую строку или undefined перед вызовом trim()
-let proxyornot = isProxy && isProxy.trim() === 'true' ? 'Yes' : 'No';
-let dynamicorno = isDynamic && isDynamic.trim() === 'true' ? 'Yes' : 'No';
+    let proxyornot = isProxy ? "Yes" : "No";
+    let dynamicorno = isDynamic ? "Yes" : "No";
       
     let memory = navigator.deviceMemory;
   
