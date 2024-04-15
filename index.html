@@ -124,11 +124,11 @@ fetch('https://api.ipregistry.co/user_agent?key=ucal10ndx2bmo0kf')
 .then(response => response.json())
 .then(data => {
   let device = data.device;
-  let brand = device.brand || 'Desktop';
+  let brand = device.brand || 'Desktop/Tablet';
   let model = device.name;
   let deviceType = device.type;
   let engine = data.engine; 
-  let namebrowser = engine.name
+  let namebrowser = engine.name;
   let osnam = data.os.name;
   let osvers = data.os.version;
     
