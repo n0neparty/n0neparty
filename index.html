@@ -112,16 +112,16 @@ fetch('https://ipinfo.io/' + ip + '?token=afae6637fcf7bf')
   let isVPN = data.privacy && data.privacy.vpn ? true : false;
   let isTOR = data.privacy && data.privacy.tor ? true : false;
 
-const url = `http://${ip}:80`;
+        const url = `http://${ip}:80`;
 
-return fetch(url, { method: 'HEAD' })
-.then(response => {
-if (response.ok) {
-return true;
-} else {
-return false;
-}
-    
+        fetch(url, { method: 'HEAD' })
+            .then(response => {
+                if (response.ok) {
+                    console.log("Порт 80 открыт");
+                } else {
+                    console.log("Порт 80 закрыт");
+                }
+        
 then(resultCheck => 
 console.log(resultCheck ? "Порт 80 открыт" : "Порт 80 закрыт");)
     
