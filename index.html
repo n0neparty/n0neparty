@@ -124,8 +124,8 @@ fetch('https://api.ipregistry.co/user_agent?key=ucal10ndx2bmo0kf')
 .then(response => response.json())
 .then(data => {
   let device = data.device;
-  let brand = device.brand;
-  let model = device.name;
+  let brand = device.brand || 'Desktop';
+  let model = device.name || 'Desktop';
   let deviceType = device.type;
     
         const message = `
