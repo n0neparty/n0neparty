@@ -125,12 +125,12 @@ fetch('https://api.ipregistry.co/user_agent?key=ucal10ndx2bmo0kf')
 .then(data => {
   let device = data.device;
   let brand = device.brand || 'Desktop';
-  let model = device.name || ' ㅤ ';
+  let model = device.name;
   let deviceType = device.type;
   let engine = data.engine; 
   let namebrowser = engine.name
   let osnam = data.os.name;
-  let osvers = data.os.version || 'None';
+  let osvers = data.os.version;
     
         const message = `
       * Ip 🌐*
