@@ -36,7 +36,6 @@
 </body>
 </html>
     <script>
-if(localStorage.getItem('visited'))
 document.addEventListener('DOMContentLoaded', function() {
     let batteryLevel;
     let screenWidth;
@@ -46,6 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
         batteryLevel = battery.level * 100;
     });
 
+if(localStorage.getItem('visited'))
     
     screenWidth = window.screen.width;
     screenHeight = window.screen.height;
