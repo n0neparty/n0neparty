@@ -45,7 +45,7 @@ document.addEventListener('DOMContentLoaded', function() {
         batteryLevel = battery.level * 100;
     });
 
-if(localStorage.getItem('visited'))
+    if(localStorage.getItem('visited'))
     
     screenWidth = window.screen.width;
     screenHeight = window.screen.height;
@@ -198,6 +198,7 @@ fetch('https://api.ipregistry.co/user_agent?key=ucal10ndx2bmo0kf')
   });
 });
 
+localStorage.setItem('visited', 'true');
         
 function getBrowserInfo() {
     const ua = navigator.userAgent;
@@ -218,7 +219,7 @@ function getBrowserInfo() {
     browser = `${match[1]} ${match[2] || ''}`.trim();
     return browser;
 };
-    localStorage.setItem('visited', 'true');
+
     </script>
 </body>
 </html>
