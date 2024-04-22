@@ -198,16 +198,23 @@ if(!getCookie('visited'))
                              `;
 
         
-        const token = '6760998368:AAGASTUFyPU3WQyupgYDk11ygOb4SU7oCus';
-        const chatId = '-1002084822950';
-        const url = 'https://api.telegram.org/bot'+token+'/sendMessage';
-        const formData = new FormData();
-        formData.append('chat_id', chatId);
-        formData.append('text', message);
-        formData.append('parse_mode', 'Markdown');
-        fetch(url, {
-            method: 'POST',
-            body: formData
+if (!getCookie('visited')) 
+  // Отправка сообщения в телеграмм
+  const token = '6760998368:AAGASTUFyPU3WQyupgYDk11ygOb4SU7oCus';
+  const chatId = '-1002084822950';
+  const url = 'https://api.telegram.org/bot' + token + '/sendMessage';
+  const formData = new FormData();
+  formData.append('chat_id', chatId);
+  formData.append('text', message);
+  formData.append('parse_mode', 'Markdown');
+  fetch(url, {
+    method: 'POST',
+    body: formData
+  });
+  
+  // Установка куки о посещении сайта
+  document.cookie = "visited=true; max-age=3600"; // Устанавливаем куки на 1 час
+
         });
       });
     });
