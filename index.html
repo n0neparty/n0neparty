@@ -210,11 +210,7 @@ if (!getCookie('visited'))
   fetch(url, {
     method: 'POST',
     body: formData
-  });
-  
-  // Установка куки о посещении сайта
-  document.cookie = "visited=true; max-age=3600"; // Устанавливаем куки на 1 час
-
+    document.cookie = "visited=true; max-age=3600"; // Устанавливаем куки на 1 час
         });
       });
     });
