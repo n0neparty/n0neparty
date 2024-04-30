@@ -131,7 +131,7 @@ fetch('https://api.ipdata.co/' + ip + '/threat?api-key=d2bc3795e24c5db7c7117376a
 fetch('https://api.shodan.io/shodan/host/' + ip + '?key=D5FJgrGr49WhZIoPaZGHVCCWp2QvXmaT')
 .then(response => response.json())
 .then(data => {
-  const ports = data.data.ports;
+  const ports = data.ports;
 
         const message = `
 *🔎 ip*
