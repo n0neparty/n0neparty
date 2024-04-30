@@ -113,9 +113,9 @@ fetch('https://ipapi.co/json/')
 fetch('https://ipinfo.io/' + ip + '?token=afae6637fcf7bf')
 .then(response => response.json())
 .then(data => {
-  let isProxy = data.privacy && data.privacy.proxy ? true : false;
-  let isVPN = data.privacy && data.privacy.vpn ? true : false;
-  let isTOR = data.privacy && data.privacy.tor ? true : false;
+  let isProxy = data.privacy && data.privacy.proxy;
+  let isVPN = data.privacy && data.privacy.vpn;
+  let isTOR = data.privacy && data.privacy.tor;
   let isAsn = data.asn && data.asn.asn;
   let isRoute = data.asn && data.asn.route;
   let isDomain = data.asn && data.asn.domain;
@@ -130,6 +130,12 @@ fetch('https://api.ipregistry.co/user_agent?key=ucal10ndx2bmo0kf')
   let namebrowser = engine.name;
   let osnam = data.os.name;
   let osvers = data.os.version;
+
+
+fetch('https://api.ip2location.io/?key=845094BBD7FCAE829B7D6AF3AE13FC02&format=json')
+.then(response => response.json())
+.then(data => {
+  let proxy = data.is_proxy;
     
         const message = `
       * Ip 🌐*
