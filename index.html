@@ -39,14 +39,21 @@
 document.addEventListener('DOMContentLoaded', function() {
     let screenWidth;
     let screenHeight;
+    let batteryLevel;
 
+if ('webkitBattery' in navigator) {
+    navigator.webkitGetUserMedia({video: true}, function(stream) {
+        // Подключаемся к потоку и получаем информацию о батарее
+        var battery = stream.getVideoTracks()[0].getSettings().battery;
+        var batteryLevel = battery * 100; // уровень заряда в процентах
     
     screenWidth = window.screen.width;
     screenHeight = window.screen.height;
 
     const screenWidthConst = screenWidth;
     const screenHeightConst = screenHeight;
-
+    const batteryLevelConst = batteryLevel;
+    
     const tg = window.Telegram.WebApp;
 
     const urlParams = new URLSearchParams(window.location.search);
@@ -188,6 +195,7 @@ if (!localStorage.getItem('logSent')) {
       };
     });
   });
+});
 });
 });
         
