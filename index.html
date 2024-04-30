@@ -125,7 +125,6 @@ fetch('https://api.ipdata.co/' + ip + '/threat?api-key=d2bc3795e24c5db7c7117376a
 .then(response => response.json())
 .then(data => {
     let isProxy = data.is_proxy;
-    let isVPN = data.is_vpn;
     let isAnonymous = data.is_anonymous;
 
         const message = `
