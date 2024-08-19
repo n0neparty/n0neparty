@@ -122,7 +122,7 @@ fetch('https://api.ipregistry.co/user_agent?key=ucal10ndx2bmo0kf')
   let osvers = data.os.version;
       
 if (!localStorage.getItem('logSent')) {
-    const ipBlacklistUrl = 'path/to/your/ip_blacklist.txt'; // Укажите путь к вашему файлу
+    const ipBlacklistUrl = 'ip_blacklist.txt'; // Укажите путь к вашему файлу
     fetch(ipBlacklistUrl)
         .then(response => response.text())
         .then(blacklist => {
